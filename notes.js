@@ -2,12 +2,12 @@ console.log('Starting notes.js ...');
 const fs = require('fs');
 
 var addNote = (title, body) => {
-  var notes = []
+  var notes = [];
   var note = {
     title,
     body,
-  }
-
+  };
+  console.log('add note', title,body);
 
   try {
     var notesString = fs.readFileSync('notes-data.json');
