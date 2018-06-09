@@ -32,7 +32,7 @@ const argv = yargs.argv;
 var command = process.argv[2];
 var command = argv._[0];
 console.log('command : ' + command);
-console.log('process',process.argv);
+// console.log('process',process.argv);
 console.log('yargs',yargs.argv);
 
 if (command === 'add'){
@@ -50,7 +50,9 @@ if (command === 'add'){
 } else if (command === 'read'){
     notes.getNote(argv.title);
 } else if (command === 'remove'){
-    notes.removeNote(argv.title);
+    var noteRemoved = notes.removeNote(argv.title);
+    var message = noteRemoved ? 'note was removed' : 'note not Founded';
+    console.log(message);
 } else {
     console.log('command not reconiz');
 }

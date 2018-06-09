@@ -42,7 +42,15 @@ var getNote = (title) => {
 };
 
 var removeNote = (title) => {
-  console.log('Removing note', title);
+  // console.log('Removing note', title);
+  // fatch notes
+  // filter notes, removing the one with title of argumant 
+  // save new notes array 
+  var notes = fatchNotes();
+  var filteredNotes = notes.filter((note) => note.title !== title);
+  saveNotes(filteredNotes);
+
+  return notes.length !== filteredNotes.length;
 };
 
 module.exports = {
