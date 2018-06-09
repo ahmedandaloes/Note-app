@@ -31,7 +31,6 @@ console.log(a + ' ' + b + ' ' + uniq);
 const argv = yargs.argv;
 var command = process.argv[2];
 var command = argv._[0];
-console.log('command : ' + command);
 // console.log('process',process.argv);
 console.log('yargs',yargs.argv);
 
@@ -48,7 +47,15 @@ if (command === 'add'){
 } else if (command === 'list'){
     notes.getAll(argv.title);
 } else if (command === 'read'){
-    notes.getNote(argv.title);
+    var note = notes.getNote(argv.title);
+    if (note) {
+        console.log('note found');
+        console.log('--');
+        console.log(`Title : ${note.title}`);
+        console.log(`Body  : ${note.body}`);
+    } else {
+        console.log('note not found');
+    }
 } else if (command === 'remove'){
     var noteRemoved = notes.removeNote(argv.title);
     var message = noteRemoved ? 'note was removed' : 'note not Founded';
