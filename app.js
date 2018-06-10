@@ -1,6 +1,4 @@
-
 // console.log('Starting app.js ...');
-
 const fs = require('fs');
 // const os = require('os');
 const  _ = require('lodash');
@@ -28,7 +26,37 @@ var b = _.isString('ahmed');
 var uniq = _.uniq([1,1,2,2,3,3]);
 console.log(a + ' ' + b + ' ' + uniq);
 */
-const argv = yargs.argv;
+const titleOptions = {
+    describe: "title of note",
+    demand: true,
+    alias: 't'
+};
+const bodyOptions = {
+    describe: "body of note",
+    demand: true,
+    alias: 'b'
+
+};
+const argv = yargs
+.command('add','add new note',{
+    title: titleOptions,
+    body: bodyOptions
+})
+.command('list','all notes lists')
+.command('read',"read one note",{
+    title: titleOptions,
+    body: bodyOptions
+})
+.command('remove','remove one note',{
+    title: titleOptions,
+    body: {
+        bodyOptions,
+        demand:false
+    }
+})
+.help()
+.argv;
+
 var command = process.argv[2];
 var command = argv._[0];
 // console.log('process',process.argv);
