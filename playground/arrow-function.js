@@ -3,7 +3,7 @@ console.log(square(9));
 
 
 var user = {
-    name: 'Andrew',
+    name: 'andaloes',
     sayHi: () => {
         console.log(arguments);
         console.log(`Hi. I'm ${this.name}`);
